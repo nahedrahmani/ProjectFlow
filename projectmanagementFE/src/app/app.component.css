@@ -1,0 +1,130 @@
+/* app.component.css */
+:host {
+  display: block;
+}
+
+/* Color Variables */
+:root {
+  --primary: #4361ee;
+  --primary-dark: #3a0ca3;
+  --success: #06d6a0;
+  --warning: #ffd60a;
+  --info: #118ab2;
+  --danger: #ef476f;
+}
+
+/* Custom Colors */
+.bg-primary { background-color: var(--primary) !important; }
+.text-primary { color: var(--primary) !important; }
+.bg-success { background-color: var(--success) !important; }
+.text-success { color: var(--success) !important; }
+.bg-warning { background-color: var(--warning) !important; }
+.text-warning { color: var(--warning) !important; }
+.bg-info { background-color: var(--info) !important; }
+.text-info { color: var(--info) !important; }
+
+/* Icon Circles - Fixed */
+.rounded-circle {
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+/* Smaller circles for cards */
+.card-body .rounded-circle {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+/* White text for all icons in circles */
+.rounded-circle i {
+  color: white !important;
+  font-size: 1.5rem !important;
+}
+
+/* Ensure icon containers maintain shape */
+.bg-white.bg-opacity-20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.bg-white.bg-opacity-10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix specific color circles */
+.bg-success.rounded-circle {
+  background-color: var(--success) !important;
+}
+
+.bg-warning.rounded-circle {
+  background-color: var(--warning) !important;
+}
+
+.bg-info.rounded-circle {
+  background-color: var(--info) !important;
+}
+
+.bg-primary.rounded-circle {
+  background-color: var(--primary) !important;
+}
+
+/* Statistics section circles */
+.bg-opacity-10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.bg-opacity-20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Font Classes */
+.font-header {
+  font-family: 'Raleway', sans-serif;
+}
+
+.font-body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section Spacing */
+section {
+  scroll-margin-top: 5rem;
+}
+
+/* Navbar underline animation */
+.nav-link-underline {
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover .nav-link-underline {
+  width: 100% !important;
+}
+
+/* Text opacity utilities */
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Padding utilities */
+.py-8 {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}

@@ -1,0 +1,655 @@
+/* =====================================================
+   GLOBAL STYLES - ProjectFlow Management System
+   ===================================================== */
+
+/* Import Bootstrap from CDN */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;500;600;700&display=swap');
+
+/* Import Boxicons */
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+/* Import Bootstrap Icons */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
+
+/* =====================================================
+   CSS VARIABLES
+   ===================================================== */
+:root {
+  /* Colors */
+  --primary: #4361ee;
+  --primary-dark: #3a0ca3;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  
+  /* Typography */
+  --font-header: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 2rem;
+  
+  /* Transitions */
+  --transition-base: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+}
+
+/* =====================================================
+   RESET & BASE STYLES
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   TYPOGRAPHY
+   ===================================================== */
+.font-header {
+  font-family: var(--font-header);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* =====================================================
+   UTILITY CLASSES
+   ===================================================== */
+.py-8 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.bg-opacity-10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-30 {
+  z-index: 30;
+}
+
+/* =====================================================
+   TRANSITIONS & ANIMATIONS
+   ===================================================== */
+.transition-all {
+  transition: var(--transition-base);
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =====================================================
+   NAVBAR STYLES
+   ===================================================== */
+.navbar {
+  padding: 1rem 0;
+  transition: var(--transition-base);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-link {
+  position: relative;
+  transition: var(--transition-base);
+  text-decoration: none;
+}
+
+.nav-link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--warning);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover .nav-link-underline {
+  width: 100%;
+}
+
+/* =====================================================
+   CARD STYLES
+   ===================================================== */
+.card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: none;
+  padding: 1.5rem;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* =====================================================
+   FORM STYLES
+   ===================================================== */
+.form-control,
+.form-select {
+  border: 2px solid #e9ecef;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  transition: var(--transition-base);
+  font-size: 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+  outline: none;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.is-invalid {
+  border-color: var(--danger) !important;
+}
+
+.invalid-feedback {
+  display: block;
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* =====================================================
+   BUTTON STYLES
+   ===================================================== */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition-base);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, #3a52d4 0%, #2f0a8a 100%);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline-primary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-outline-secondary {
+  background: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: var(--dark);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* =====================================================
+   ALERT STYLES
+   ===================================================== */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  color: #0c5460;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  color: #856404;
+}
+
+/* =====================================================
+   BADGE STYLES
+   ===================================================== */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.badge.bg-success {
+  background-color: var(--success) !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--warning) !important;
+  color: var(--dark) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--danger) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+/* =====================================================
+   SPINNER STYLES
+   ===================================================== */
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================================================
+   PROJECT/TASK LIST STYLES
+   ===================================================== */
+.project-item,
+.task-item {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.project-item:hover,
+.task-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateX(5px);
+}
+
+.project-header,
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.project-title,
+.task-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0;
+}
+
+.project-meta,
+.task-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-description,
+.task-description {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.project-actions,
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* =====================================================
+   STATUS BADGE STYLES
+   ===================================================== */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-xl);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-completed {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-on-hold {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* =====================================================
+   EMPTY STATE STYLES
+   ===================================================== */
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--secondary);
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.empty-state h5 {
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--secondary);
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   RESPONSIVE UTILITIES
+   ===================================================== */
+@media (max-width: 768px) {
+  .py-8 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .project-header,
+  .task-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .project-actions,
+  .task-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+/* =====================================================
+   SCROLLBAR STYLES
+   ===================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* =====================================================
+   LOADING STATE
+   ===================================================== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* =====================================================
+   SECTION SPACING
+   ===================================================== */
+section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+section:first-of-type {
+  margin-top: 72px; /* Navbar height */
+}
+
+/* =====================================================
+   ADDITIONAL BOOTSTRAP OVERRIDES
+   ===================================================== */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.border-primary {
+  border-color: var(--primary) !important;
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.rounded-3 {
+  border-radius: var(--radius-md) !important;
+}
+
+.rounded-4 {
+  border-radius: var(--radius-lg) !important;
+}

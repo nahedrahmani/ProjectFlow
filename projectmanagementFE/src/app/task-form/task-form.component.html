@@ -1,0 +1,91 @@
+<div class="task-form">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    
+    <!-- Task Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label fw-bold">Task Title *</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="title" 
+        formControlName="title"
+        [class.is-invalid]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+        placeholder="Enter task title"
+      >
+      <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="invalid-feedback">
+        <span *ngIf="taskForm.get('title')?.errors?.['required']">Task title is required</span>
+        <span *ngIf="taskForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters</span>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label for="status" class="form-label fw-bold">Status *</label>
+      <select 
+        class="form-select" 
+        id="status" 
+        formControlName="status"
+        [class.is-invalid]="taskForm.get('status')?.invalid && taskForm.get('status')?.touched"
+      >
+        <option *ngFor="let option of statusOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched" class="invalid-feedback">
+        Please select a status
+      </div>
+    </div>
+
+    <!-- Due Date -->
+    <div class="mb-4">
+      <label for="dueDate" class="form-label fw-bold">Due Date *</label>
+      <input 
+        type="date" 
+        class="form-control" 
+        id="dueDate" 
+        formControlName="dueDate"
+        [class.is-invalid]="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched"
+        [min]="getMinDate()"
+      >
+      <div *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="invalid-feedback">
+        <span *ngIf="taskForm.get('dueDate')?.errors?.['required']">Due date is required</span>
+      </div>
+    </div>
+
+    <!-- Project Info (if creating new task) -->
+    <div *ngIf="!projectId && !isEditMode" class="alert alert-warning">
+      <i class="bi bi-exclamation-triangle me-2"></i>
+      Please select a project from the list before creating a task.
+    </div>
+
+    <!-- Form Actions -->
+    <div class="d-flex gap-2">
+      <button 
+        type="submit" 
+        class="btn btn-primary flex-grow-1"
+        [disabled]="taskForm.invalid || isLoading || (!projectId && !isEditMode)"
+      >
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+        {{ isEditMode ? 'Update Task' : 'Create Task' }}
+      </button>
+      
+      <button 
+        type="button" 
+        class="btn btn-outline-secondary"
+        (click)="onCancel()"
+        [disabled]="isLoading"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3 mb-0">
+      <i class="bi bi-check-circle me-2"></i>{{ successMessage }}
+    </div>
+    
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3 mb-0">
+      <i class="bi bi-exclamation-circle me-2"></i>{{ errorMessage }}
+    </div>
+  </form>
+</div>

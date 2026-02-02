@@ -1,0 +1,128 @@
+<div class="task-list">
+  
+  <!-- Project Selection Required -->
+  <div *ngIf="!projectId" class="alert alert-info">
+    <i class="bi bi-info-circle me-2"></i>
+    Please select a project from the list to view its tasks.
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2 text-muted">Loading tasks...</p>
+  </div>
+
+  <!-- Tasks Content -->
+  <div *ngIf="!isLoading && projectId">
+    
+    <!-- Filter Controls -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="btn-group btn-group-sm" role="group">
+        <button type="button" 
+                class="btn" 
+                [class.btn-primary]="filterStatus === 'ALL'"
+                [class.btn-outline-primary]="filterStatus !== 'ALL'"
+                (click)="onFilterChange('ALL')">
+          All
+        </button>
+        <button type="button" 
+                class="btn" 
+                [class.btn-primary]="filterStatus === 'TODO'"
+                [class.btn-outline-primary]="filterStatus !== 'TODO'"
+                (click)="onFilterChange('TODO')">
+          To Do
+        </button>
+        <button type="button" 
+                class="btn" 
+                [class.btn-primary]="filterStatus === 'IN_PROGRESS'"
+                [class.btn-outline-primary]="filterStatus !== 'IN_PROGRESS'"
+                (click)="onFilterChange('IN_PROGRESS')">
+          In Progress
+        </button>
+        <button type="button" 
+                class="btn" 
+                [class.btn-primary]="filterStatus === 'DONE'"
+                [class.btn-outline-primary]="filterStatus !== 'DONE'"
+                (click)="onFilterChange('DONE')">
+          Done
+        </button>
+      </div>
+      <small class="text-muted">{{ filteredTasks.length }} tasks</small>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredTasks.length === 0" class="text-center py-5">
+      <div class="mb-3">
+        <i class="bi bi-clipboard-check text-muted" style="font-size: 3rem;"></i>
+      </div>
+      <h5 class="text-muted">No tasks found</h5>
+      <p class="text-muted" *ngIf="filterStatus !== 'ALL'">
+        No tasks with status "{{ getStatusLabel(filterStatus) }}"
+      </p>
+      <p class="text-muted" *ngIf="filterStatus === 'ALL'">
+        Create your first task for this project!
+      </p>
+    </div>
+
+    <!-- Tasks List -->
+    <div *ngIf="filteredTasks.length > 0" class="list-group">
+      <div *ngFor="let task of filteredTasks" 
+           class="list-group-item list-group-item-action border-0 rounded-3 mb-2 p-3 shadow-sm"
+           [class.border-danger]="isOverdue(task.dueDate) && task.status !== 'DONE'">
+        
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="flex-grow-1">
+            <!-- Task Title -->
+            <h6 class="fw-bold mb-1 d-flex align-items-center">
+              {{ task.title }}
+              <span *ngIf="isOverdue(task.dueDate) && task.status !== 'DONE'" 
+                    class="badge bg-danger ms-2">
+                <i class="bi bi-exclamation-triangle me-1"></i>Overdue
+              </span>
+            </h6>
+            
+            <!-- Task Details -->
+            <div class="d-flex align-items-center gap-3 flex-wrap mt-2">
+              <!-- Status -->
+              <span [class]="getStatusClass(task.status)" class="text-nowrap">
+                {{ getStatusLabel(task.status) }}
+              </span>
+              
+              <!-- Due Date -->
+              <small class="text-muted" [class.text-danger]="isOverdue(task.dueDate) && task.status !== 'DONE'">
+                <i class="bi bi-calendar3 me-1"></i>
+                Due: {{ formatDate(task.dueDate) }}
+              </small>
+            </div>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="d-flex gap-2 ms-3">
+            <!-- Edit Button -->
+            <button class="btn btn-outline-secondary btn-sm" 
+                    (click)="onSelectTask(task)"
+                    title="Edit Task">
+              <i class="bi bi-pencil"></i>
+            </button>
+            
+            <!-- Delete Button -->
+            <button class="btn btn-outline-danger btn-sm" 
+                    (click)="onDeleteTask(task.id!)"
+                    title="Delete Task"
+                    [disabled]="isDeletingId === task.id">
+              <span *ngIf="isDeletingId === task.id" class="spinner-border spinner-border-sm"></span>
+              <i *ngIf="isDeletingId !== task.id" class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ errorMessage }}
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="project-form">
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    
+    <!-- Project Name -->
+    <div class="mb-4">
+      <label for="name" class="form-label fw-bold">Project Name *</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        formControlName="name"
+        [class.is-invalid]="projectForm.get('name')?.invalid && projectForm.get('name')?.touched"
+        placeholder="Enter project name"
+      >
+      <div *ngIf="projectForm.get('name')?.invalid && projectForm.get('name')?.touched" class="invalid-feedback">
+        <span *ngIf="projectForm.get('name')?.errors?.['required']">Project name is required</span>
+        <span *ngIf="projectForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters</span>
+      </div>
+    </div>
+
+    <!-- Project Description -->
+    <div class="mb-5">
+      <label for="description" class="form-label fw-bold">Description</label>
+      <textarea 
+        class="form-control" 
+        id="description" 
+        formControlName="description"
+        rows="3"
+        placeholder="Describe your project..."
+      ></textarea>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="d-flex gap-2">
+      <button 
+        type="submit" 
+        class="btn btn-primary flex-grow-1"
+        [disabled]="projectForm.invalid || isLoading"
+      >
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+        {{ isEditMode ? 'Update Project' : 'Create Project' }}
+      </button>
+      
+      <button 
+        type="button" 
+        class="btn btn-outline-secondary"
+        (click)="onCancel()"
+        [disabled]="isLoading"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3 mb-0">
+      <i class="bi bi-check-circle me-2"></i>{{ successMessage }}
+    </div>
+    
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3 mb-0">
+      <i class="bi bi-exclamation-circle me-2"></i>{{ errorMessage }}
+    </div>
+  </form>
+</div>

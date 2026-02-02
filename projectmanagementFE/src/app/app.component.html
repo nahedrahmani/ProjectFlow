@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management System</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;500;600;700&display=swap">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <base href="/">
+</head>
+
+<body class="font-body">
+  <!-- Navigation Bar - Enhanced with Atom template style -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="#hero">
+        <i class="bi bi-kanban-fill fs-3 me-2"></i>
+        <span class="font-header">ProjectFlow</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="bx bx-menu text-white fs-3"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item position-relative mx-2">
+            <a class="nav-link font-header fw-semibold text-uppercase text-white py-3 px-2" href="#hero">
+              <span>Home</span>
+              <span class="position-absolute bottom-0 start-0 w-0 h-1 bg-warning transition-all duration-300 nav-link-underline"></span>
+            </a>
+          </li>
+          <li class="nav-item position-relative mx-2">
+            <a class="nav-link font-header fw-semibold text-uppercase text-white py-3 px-2" href="#projects">
+              <span>Projects</span>
+              <span class="position-absolute bottom-0 start-0 w-0 h-1 bg-warning transition-all duration-300 nav-link-underline"></span>
+            </a>
+          </li>
+          <li class="nav-item position-relative mx-2">
+            <a class="nav-link font-header fw-semibold text-uppercase text-white py-3 px-2" href="#tasks">
+              <span>Tasks</span>
+              <span class="position-absolute bottom-0 start-0 w-0 h-1 bg-warning transition-all duration-300 nav-link-underline"></span>
+            </a>
+          </li>
+          <li class="nav-item position-relative mx-2">
+            <a class="nav-link font-header fw-semibold text-uppercase text-white py-3 px-2" href="#about">
+              <span>About</span>
+              <span class="position-absolute bottom-0 start-0 w-0 h-1 bg-warning transition-all duration-300 nav-link-underline"></span>
+            </a>
+          </li>
+          <li class="nav-item position-relative mx-2">
+            <a class="nav-link font-header fw-semibold text-uppercase text-white py-3 px-2" href="#contact">
+              <span>Contact</span>
+              <span class="position-absolute bottom-0 start-0 w-0 h-1 bg-warning transition-all duration-300 nav-link-underline"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Enhanced with Atom template style -->
+  <section id="hero" class="position-relative bg-cover bg-center bg-no-repeat py-8 min-vh-100 d-flex align-items-center"
+           style="background-image: linear-gradient(rgba(67, 97, 238, 0.9), rgba(58, 12, 163, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+    <div class="container position-relative z-30">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+          <h1 class="font-header display-4 fw-bold text-white mb-4">
+            Manage Projects & Tasks Efficiently<br>
+            <span class="text-warning"></span>
+          </h1>
+          <p class="font-body fs-5 text-white-75 mb-5">
+            A complete project management solution built with Angular and Spring Boot. 
+            Organize, track, and complete your projects successfully with our intuitive platform.
+          </p>
+         
+        </div>
+        <div class="col-lg-6">
+          <div class="position-relative">
+            <div class="card border-0 shadow-lg bg-white bg-opacity-10 backdrop-blur p-4 rounded-4 border border-white border-opacity-25">
+              <div class="card-body p-4">
+                <h5 class="card-title text-warning fw-bold font-header mb-4">Project Dashboard</h5>
+                
+                <div class="d-flex align-items-center mb-4 p-3 bg-white bg-opacity-10 rounded-3">
+                  <div class="bg-success rounded-circle p-3 me-3">
+                    <i class="bx bx-check-circle text-white fs-4"></i>
+                  </div>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Active Projects</h6>
+                    <small class="text-white-75">Track progress in real-time</small>
+                  </div>
+                </div>
+                
+                <div class="d-flex align-items-center mb-4 p-3 bg-white bg-opacity-10 rounded-3">
+                  <div class="bg-warning rounded-circle p-3 me-3">
+                    <i class="bx bx-time text-white fs-4"></i>
+                  </div>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Task Management</h6>
+                    <small class="text-white-75">Assign and monitor tasks</small>
+                  </div>
+                </div>
+                
+                <div class="d-flex align-items-center p-3 bg-white bg-opacity-10 rounded-3">
+                  <div class="bg-info rounded-circle p-3 me-3">
+                    <i class="bx bx-trending-up text-white fs-4"></i>
+                  </div>
+                  <div>
+                    <h6 class="fw-bold text-white mb-1">Progress Tracking</h6>
+                    <small class="text-white-75">Visualize your team's progress</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Floating Elements -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section - Enhanced -->
+  <section id="about" class="py-8 bg-light">
+    <div class="container py-5">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
+            About ProjectFlow
+          </h2>
+          <p class="font-body fs-5 text-muted mb-0">
+            A powerful project management system designed to help teams collaborate and deliver projects successfully.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
+                <div class="card-body p-4 text-center">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-4 d-inline-block">
+                    <i class="bx bxs-bolt text-primary fs-2"></i>
+                  </div>
+                  <h5 class="fw-bold text-primary mb-3">Fast & Efficient</h5>
+                  <p class="text-muted mb-0">Real-time updates and instant notifications for seamless collaboration.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
+                <div class="card-body p-4 text-center">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-4 d-inline-block">
+                    <i class="bx bx-shield-alt text-primary fs-2"></i>
+                  </div>
+                  <h5 class="fw-bold text-primary mb-3">Secure</h5>
+                  <p class="text-muted mb-0">Enterprise-grade security with data encryption and regular backups.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
+                <div class="card-body p-4 text-center">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-4 d-inline-block">
+                    <i class="bx bx-mobile-alt text-primary fs-2"></i>
+                  </div>
+                  <h5 class="fw-bold text-primary mb-3">Responsive</h5>
+                  <p class="text-muted mb-0">Works perfectly on all devices - desktop, tablet, and mobile.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
+                <div class="card-body p-4 text-center">
+                  <div class="bg-primary bg-opacity-10 rounded-circle p-3 mb-4 d-inline-block">
+                    <i class="bx bx-expand-alt text-primary fs-2"></i>
+                  </div>
+                  <h5 class="fw-bold text-primary mb-3">Scalable</h5>
+                  <p class="text-muted mb-0">Grows with your team and projects, handling any workload.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg h-100">
+            <div class="card-body p-5">
+              <h3 class="font-header fw-bold text-primary mb-4">System Features</h3>
+              <ul class="list-unstyled">
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">Project Management:</strong>
+                    <span class="text-muted">Create, update, and delete projects with detailed information</span>
+                  </div>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">Task Management:</strong>
+                    <span class="text-muted">Assign tasks to projects and track progress in real-time</span>
+                  </div>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">Status Tracking:</strong>
+                    <span class="text-muted">Monitor project and task status with visual indicators</span>
+                  </div>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">Due Date Management:</strong>
+                    <span class="text-muted">Set and track deadlines with notifications</span>
+                  </div>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">User-Friendly Interface:</strong>
+                    <span class="text-muted">Intuitive design for easy navigation and operation</span>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start">
+                  <i class="bx bx-check-circle text-success fs-5 me-3 mt-1"></i>
+                  <div>
+                    <strong class="d-block">RESTful API:</strong>
+                    <span class="text-muted">Seamless integration with Spring Boot backend</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section - Enhanced -->
+  <section id="projects" class="py-8">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
+            Project Management
+          </h2>
+          <p class="font-body fs-5 text-muted">
+            Create and manage your projects. Each project can have multiple tasks.
+          </p>
+        </div>
+      </div>
+      
+      <div class="row g-5">
+        <!-- Project Form Component -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+            <div class="card-header bg-primary text-white py-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                  <i class="bx bx-plus-circle fs-4"></i>
+                </div>
+                <h4 class="card-title mb-0 font-header fw-bold">
+                  {{ isEditingProject ? 'Edit Project' : 'Create New Project' }}
+                </h4>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <app-project-form 
+                [project]="selectedProject" 
+                (projectSaved)="onProjectSaved($event)"
+                (cancelEdit)="onCancelEdit()">
+              </app-project-form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project List Component -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+            <div class="card-header bg-primary text-white py-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                  <i class="bx bx-folder-open fs-4"></i>
+                </div>
+                <h4 class="card-title mb-0 font-header fw-bold">
+                  All Projects
+                </h4>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <app-project-list 
+                (selectProject)="onSelectProject($event)"
+                (deleteProject)="onDeleteProject($event)">
+              </app-project-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Edit Project Modal -->
+<div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="editProjectModalLabel">
+          <i class="bx bx-edit-alt me-2"></i>Edit Project
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+    <app-project-form 
+      [project]="selectedProject"   
+      (projectSaved)="onProjectSaved($event)"
+      (cancelEdit)="onCancelEdit()">
+    </app-project-form>
+  </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Tasks Section - Enhanced -->
+  <section id="tasks" class="py-8 bg-light">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
+            Task Management
+          </h2>
+          <p class="font-body fs-5 text-muted">
+            Manage tasks for your projects. Tasks belong to specific projects.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Selected Project Info -->
+      <div class="row mb-4" *ngIf="selectedProject">
+        <div class="col-12">
+          <div class="alert bg-primary bg-opacity-10 border border-primary border-opacity-25 rounded-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <div class="bg-primary rounded-circle p-2 me-3">
+                  <i class="bx bx-folder text-white"></i>
+                </div>
+                <div>
+                  <h5 class="mb-1 fw-bold">Currently viewing tasks for: <span class="text-primary">{{ selectedProject.name }}</span></h5>
+                  <p class="mb-0 text-muted">{{ selectedProject.description || 'No description available' }}</p>
+                </div>
+              </div>
+              <button class="btn btn-outline-primary btn-sm d-flex align-items-center" (click)="clearSelection()">
+                <i class="bx bx-x-circle me-1"></i>Clear Selection
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <!-- Task Form Component -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+            <div class="card-header bg-primary text-white py-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                  <i class="bx bx-task fs-4"></i>
+                </div>
+                <h4 class="card-title mb-0 font-header fw-bold">
+                  {{ isEditingTask ? 'Edit Task' : 'Create New Task' }}
+                </h4>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <app-task-form 
+                [task]="selectedTask" 
+                [projectId]="selectedProject?.id"
+                (taskSaved)="onTaskSaved($event)"
+                (cancelEdit)="onCancelTaskEdit()">
+              </app-task-form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Task List Component -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+            <div class="card-header bg-primary text-white py-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                    <i class="bx bx-list-check fs-4"></i>
+                  </div>
+                  <h4 class="card-title mb-0 font-header fw-bold">
+                    Tasks
+                  </h4>
+                </div>
+                <span *ngIf="selectedProject" class="badge bg-warning text-dark px-3 py-2">
+                  <i class="bx bx-folder me-1"></i>{{ selectedProject.name }}
+                </span>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <app-task-list 
+                [projectId]="selectedProject?.id"
+                (selectTask)="onSelectTask($event)"
+                (deleteTask)="onDeleteTask($event)">
+              </app-task-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section - Enhanced with Atom template style -->
+  <section class="py-8 position-relative bg-cover bg-center"
+           style="background-image: linear-gradient(rgba(67, 97, 238, 0.95), rgba(58, 12, 163, 0.95)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+    <div class="container position-relative z-1">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h2 class="font-header display-5 fw-bold text-white text-uppercase mb-3">
+            System Statistics
+          </h2>
+          <p class="font-body fs-5 text-white-75">
+            Real-time insights about your projects and tasks
+          </p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card border-0 bg-white bg-opacity-10 backdrop-blur shadow-lg h-100 text-center hover-lift transition-all">
+            <div class="card-body p-5">
+              <div class="bg-white bg-opacity-20 rounded-circle p-4 d-inline-block mb-4">
+                <i class="bx bx-folder text-white fs-1"></i>
+              </div>
+              <h3 class="fw-bold text-white display-4 mb-2">{{ projectCount }}</h3>
+              <p class="text-warning fw-semibold text-uppercase mb-0">Total Projects</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 bg-white bg-opacity-10 backdrop-blur shadow-lg h-100 text-center hover-lift transition-all">
+            <div class="card-body p-5">
+              <div class="bg-white bg-opacity-20 rounded-circle p-4 d-inline-block mb-4">
+                <i class="bx bx-task text-white fs-1"></i>
+              </div>
+              <h3 class="fw-bold text-white display-4 mb-2">{{ taskCount }}</h3>
+              <p class="text-warning fw-semibold text-uppercase mb-0">Total Tasks</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 bg-white bg-opacity-10 backdrop-blur shadow-lg h-100 text-center hover-lift transition-all">
+            <div class="card-body p-5">
+              <div class="bg-white bg-opacity-20 rounded-circle p-4 d-inline-block mb-4">
+                <i class="bx bx-time text-white fs-1"></i>
+              </div>
+              <h3 class="fw-bold text-white display-4 mb-2">{{ activeTaskCount }}</h3>
+              <p class="text-warning fw-semibold text-uppercase mb-0">Active Tasks</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 bg-white bg-opacity-10 backdrop-blur shadow-lg h-100 text-center hover-lift transition-all">
+            <div class="card-body p-5">
+              <div class="bg-white bg-opacity-20 rounded-circle p-4 d-inline-block mb-4">
+                <i class="bx bx-trending-up text-white fs-1"></i>
+              </div>
+              <h3 class="fw-bold text-white display-4 mb-2">99.9%</h3>
+              <p class="text-warning fw-semibold text-uppercase mb-0">System Uptime</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section - Enhanced -->
+  <section id="contact" class="py-8">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12 text-center">
+          <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
+            Contact Us
+          </h2>
+          <p class="font-body fs-5 text-muted">
+            Have questions? Get in touch with our team
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-8 mx-auto">
+          <div class="card border-0 shadow-lg">
+            <div class="card-body p-5">
+              <form class="row g-4">
+                <div class="col-md-6">
+                  <input type="text" class="form-control form-control-lg border-2 py-3" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control form-control-lg border-2 py-3" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control form-control-lg border-2 py-3" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fw-bold d-inline-flex align-items-center">
+                    <i class="bx bx-send me-2"></i>
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Enhanced -->
+  <footer class="bg-dark text-white py-8">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-4">
+            <i class="bx bx-rocket text-warning fs-1 me-3"></i>
+            <h4 class="fw-bold mb-0 font-header">ProjectFlow</h4>
+          </div>
+          <p class="text-white-75 mb-4">
+            A complete project management solution built with Angular and Spring Boot. 
+            Streamline your workflow and boost productivity.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white text-decoration-none bg-primary bg-opacity-25 rounded-circle p-2 d-inline-flex align-items-center justify-content-center">
+              <i class="bx bxl-github fs-5"></i>
+            </a>
+            <a href="#" class="text-white text-decoration-none bg-primary bg-opacity-25 rounded-circle p-2 d-inline-flex align-items-center justify-content-center">
+              <i class="bx bxl-linkedin fs-5"></i>
+            </a>
+            <a href="#" class="text-white text-decoration-none bg-primary bg-opacity-25 rounded-circle p-2 d-inline-flex align-items-center justify-content-center">
+              <i class="bx bxl-twitter fs-5"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-4 font-header">Contact Info</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bx bx-envelope text-warning fs-5 me-3 mt-1"></i>
+              <div>
+                <strong class="d-block">Email</strong>
+                <a href="mailto:contact@projectflow.com" class="text-white-75 text-decoration-none">contact@projectflow.com</a>
+              </div>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bx bx-map text-warning fs-5 me-3 mt-1"></i>
+              <div>
+                <strong class="d-block">Address</strong>
+                <span class="text-white-75">123 Tech Street, Digital City</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-5 border-white border-opacity-25">
+      
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-white-75 mb-0">
+            © 2024 ProjectFlow. All rights reserved. | Built with Angular & Spring Boot
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
