@@ -39,20 +39,20 @@
           </div>
         </div>
         <div class="d-flex gap-2">
-          <!-- View Tasks Button -->
+          <!-- Show Tasks / Eye - Just selects the project to view its tasks -->
           <button class="btn btn-outline-primary btn-sm" 
-                  (click)="onSelectProject(project)"
+                  (click)="onShowProject(project)"
                   title="View Tasks">
             <i class="bi bi-eye"></i>
           </button>
-          
-          <!-- Edit Button -->
+
+          <!-- Edit Project / Pencil - Opens edit modal -->
           <button class="btn btn-outline-secondary btn-sm" 
-                  (click)="onSelectProject(project)"
+                  (click)="onEditProject(project)"
                   title="Edit Project">
             <i class="bi bi-pencil"></i>
           </button>
-          
+                  
           <!-- Delete Button -->
           <button class="btn btn-outline-danger btn-sm" 
                   (click)="onDeleteProject(project.id!)"
