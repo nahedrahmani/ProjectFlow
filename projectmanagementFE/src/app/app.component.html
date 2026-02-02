@@ -238,68 +238,67 @@
     </div>
   </section>
 
-  <!-- Projects Section - Enhanced -->
-  <section id="projects" class="py-8">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-12 text-center">
-          <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
-            Project Management
-          </h2>
-          <p class="font-body fs-5 text-muted">
-            Create and manage your projects. Each project can have multiple tasks.
-          </p>
+ <!-- Projects Section - Enhanced -->
+<section id="projects" class="py-8">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="font-header display-5 fw-bold text-primary text-uppercase mb-3">
+          Project Management
+        </h2>
+        <p class="font-body fs-5 text-muted">
+          Create and manage your projects. Each project can have multiple tasks.
+        </p>
+      </div>
+    </div>
+    
+    <div class="row g-5">
+      <!-- Project Form Component -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+          <div class="card-header bg-primary text-white py-4">
+            <div class="d-flex align-items-center">
+              <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                <i class="bx bx-plus-circle fs-4"></i>
+              </div>
+              <h4 class="card-title mb-0 font-header fw-bold">
+                Create New Project
+              </h4>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <app-project-form 
+              (projectSaved)="onProjectSaved($event)">
+            </app-project-form>
+          </div>
         </div>
       </div>
       
-      <div class="row g-5">
-        <!-- Project Form Component -->
-        <div class="col-lg-6">
-          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
-            <div class="card-header bg-primary text-white py-4">
-              <div class="d-flex align-items-center">
-                <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
-                  <i class="bx bx-plus-circle fs-4"></i>
-                </div>
-                <h4 class="card-title mb-0 font-header fw-bold">
-                  {{ isEditingProject ? 'Edit Project' : 'Create New Project' }}
-                </h4>
+      <!-- Project List Component -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
+          <div class="card-header bg-primary text-white py-4">
+            <div class="d-flex align-items-center">
+              <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
+                <i class="bx bx-folder-open fs-4"></i>
               </div>
-            </div>
-            <div class="card-body p-4">
-              <app-project-form 
-                [project]="selectedProject" 
-                (projectSaved)="onProjectSaved($event)"
-                (cancelEdit)="onCancelEdit()">
-              </app-project-form>
+              <h4 class="card-title mb-0 font-header fw-bold">
+                All Projects
+              </h4>
             </div>
           </div>
-        </div>
-        
-        <!-- Project List Component -->
-        <div class="col-lg-6">
-          <div class="card border-0 shadow-lg h-100 hover-lift transition-all">
-            <div class="card-header bg-primary text-white py-4">
-              <div class="d-flex align-items-center">
-                <div class="bg-white bg-opacity-20 p-2 rounded-circle me-3">
-                  <i class="bx bx-folder-open fs-4"></i>
-                </div>
-                <h4 class="card-title mb-0 font-header fw-bold">
-                  All Projects
-                </h4>
-              </div>
-            </div>
-            <div class="card-body p-4">
-              <app-project-list 
-                (selectProject)="onSelectProject($event)"
-                (deleteProject)="onDeleteProject($event)">
-              </app-project-list>
-            </div>
+          <div class="card-body p-4">
+            <app-project-list 
+              (selectProject)="onSelectProject($event)"
+              (editProject)="onEditProject($event)"
+              (deleteProject)="onDeleteProject($event)">
+            </app-project-list>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <!-- Edit Project Modal -->
 <div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
@@ -312,16 +311,15 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
-    <app-project-form 
-      [project]="selectedProject"   
-      (projectSaved)="onProjectSaved($event)"
-      (cancelEdit)="onCancelEdit()">
-    </app-project-form>
-  </div>
+        <app-project-form 
+          [project]="selectedProject"   
+          (projectSaved)="onProjectSaved($event)"
+          (cancelEdit)="onCancelEdit()">
+        </app-project-form>
+      </div>
     </div>
   </div>
 </div>
-
   <!-- Tasks Section - Enhanced -->
   <section id="tasks" class="py-8 bg-light">
     <div class="container">
