@@ -28,6 +28,11 @@ public class Project {
     @JsonIgnoreProperties("project")
     private List<Task> tasks = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("projects")
+    private User user;
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
@@ -69,5 +74,14 @@ public class Project {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    // Add getter and setter
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

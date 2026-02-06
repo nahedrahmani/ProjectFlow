@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule , ReactiveFormsModule  } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,10 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     ProjectFormComponent,
     TaskFormComponent,
     TaskListComponent,
-    TruncatePipe
+    TruncatePipe,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,11 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -43,4 +43,10 @@ public class ProjectController {
     public void deleteProject(@PathVariable Long id) {
         projectService.deleteProject(id);
     }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "pong";
+    }
+
 }

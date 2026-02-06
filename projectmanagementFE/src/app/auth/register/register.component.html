@@ -1,0 +1,101 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <i class="bx bx-user-plus"></i>
+      <h2>Create Account</h2>
+      <p>Join ProjectFlow today</p>
+    </div>
+
+    <div class="register-body">
+      <div class="alert alert-success" *ngIf="successMessage">
+        <i class="bx bx-check-circle"></i> {{ successMessage }}
+      </div>
+
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <i class="bx bx-error-circle"></i> {{ errorMessage }}
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-group">
+            <span class="input-icon"><i class="bx bx-user"></i></span>
+            <input 
+              type="text" 
+              id="username" 
+              class="form-control" 
+              formControlName="username"
+              placeholder="Choose a username">
+          </div>
+          <small class="text-danger" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+            Username must be at least 3 characters
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <span class="input-icon"><i class="bx bx-envelope"></i></span>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control" 
+              formControlName="email"
+              placeholder="Enter your email">
+          </div>
+          <small class="text-danger" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            Please enter a valid email
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-group">
+            <span class="input-icon"><i class="bx bx-lock-alt"></i></span>
+            <input 
+              type="password" 
+              id="password" 
+              class="form-control" 
+              formControlName="password"
+              placeholder="Create a password">
+          </div>
+          <small class="text-danger" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            Password must be at least 6 characters
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-group">
+            <span class="input-icon"><i class="bx bx-lock-alt"></i></span>
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              class="form-control" 
+              formControlName="confirmPassword"
+              placeholder="Confirm your password">
+          </div>
+          <small class="text-danger" *ngIf="registerForm.get('confirmPassword')?.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+            Passwords do not match
+          </small>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-block"
+          [disabled]="isLoading || registerForm.invalid">
+          <span *ngIf="!isLoading">
+            <i class="bx bx-user-plus"></i> Create Account
+          </span>
+          <span *ngIf="isLoading">
+            <i class="bx bx-loader-alt bx-spin"></i> Creating account...
+          </span>
+        </button>
+
+        <div class="text-center mt-3">
+          <p>Already have an account? <a routerLink="/login">Sign In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

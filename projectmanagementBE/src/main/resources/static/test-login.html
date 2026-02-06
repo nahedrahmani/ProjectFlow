@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background: #0056b3; }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .error { color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 4px; }
+        .success { color: #155724; background: #d4edda; padding: 10px; border-radius: 4px; }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Test Login Form</h2>
+    <div class="form-group">
+        <label>Username:</label>
+        <input type="text" id="username" value="test">
+    </div>
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" id="password" value="test123">
+    </div>
+    <button type="button" onclick="login()">Login</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    async function login() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Clear previous results
+        document.getElementById('result').innerHTML = '<div>Processing...</div>';
+
+        try {
+            const response = await fetch('http://localhost:8099/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
+
+            console.log('Response status:', response.status);
+            console.log('Response headers:', [...response.headers.entries()]);
+
+            if (!response.ok) {
+                let errorText;
+                try {
+                    const errorData = await response.json();
+                    errorText = JSON.stringify(errorData, null, 2);
+                } catch (e) {
+                    errorText = await response.text();
+                }
+
+                throw new Error(`HTTP ${response.status}: ${errorText || response.statusText}`);
+            }
+
+            const result = await response.json();
+
+            document.getElementById('result').innerHTML = `
+                <div class="success">
+                    <h3>✅ Login Successful!</h3>
+                </div>
+                <h4>Response Data:</h4>
+                <pre>${JSON.stringify(result, null, 2)}</pre>
+                <div class="success">
+                    <h4>How to use the token:</h4>
+                    <p>Add this header to your API requests:</p>
+                    <pre style="background: #e9ecef; color: #000; padding: 10px; border-radius: 4px;">
+Authorization: Bearer ${result.token}</pre>
+                    <p>Example curl command:</p>
+                    <pre style="background: #e9ecef; color: #000; padding: 10px; border-radius: 4px;">
+curl -H "Authorization: Bearer ${result.token}" \\
+     http://localhost:8099/api/projects</pre>
+                </div>
+            `;
+
+        } catch (error) {
+            console.error('Login error:', error);
+            document.getElementById('result').innerHTML = `
+                <div class="error">
+                    <h3>❌ Login Failed</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Debug Info:</strong></p>
+                    <ul>
+                        <li>Endpoint: POST /api/auth/login</li>
+                        <li>Username: ${username}</li>
+                        <li>Password: ${password ? '***' + password.slice(-2) : 'empty'}</li>
+                        <li>Check browser console for details</li>
+                    </ul>
+                </div>
+            `;
+        }
+    }
+
+    // Add event listener for Enter key
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            login();
+        }
+    });
+</script>
+</body>
+</html>

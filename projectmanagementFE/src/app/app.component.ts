@@ -33,12 +33,20 @@ export class AppComponent implements OnInit {
   // PROJECT METHODS
   // ============================================
   
+  // Called when eye button is clicked - just selects project to view tasks
   onSelectProject(project: any) {
-    console.log('Selected project:', project);  
+    this.selectedProject = project;
+    this.isEditingProject = false;
+    this.scrollTo('tasks');
+  }
+
+  // Called when pencil button is clicked - opens edit modal
+  onEditProject(project: any) {
     this.selectedProject = project;
     this.isEditingProject = true;
     this.openModal();
   }
+
   openModal() {
     const modalElement = document.getElementById('editProjectModal');
     if (modalElement) {
@@ -58,14 +66,16 @@ export class AppComponent implements OnInit {
   onProjectSaved(project: any) {
     this.closeModal();
     this.loadStatistics();
-    window.location.hash = '#projects'; // Small trick to trigger refresh
+    // Refresh the page to show updated project list
+    window.location.hash = '#projects';
     setTimeout(() => window.location.reload(), 100);
-    // The project list component should refresh automatically
   }
 
   onDeleteProject(projectId: number) {
-    this.selectedProject = null;
-    this.isEditingProject = false;
+    if (this.selectedProject?.id === projectId) {
+      this.selectedProject = null;
+      this.isEditingProject = false;
+    }
     this.loadStatistics();
   }
 
@@ -142,4 +152,6 @@ export class AppComponent implements OnInit {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  
 }

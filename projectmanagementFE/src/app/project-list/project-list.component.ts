@@ -8,6 +8,7 @@ import { ProjectService, Project } from '../services/project.service';
 })
 export class ProjectListComponent implements OnInit {
   @Output() selectProject = new EventEmitter<Project>();
+  @Output() editProject = new EventEmitter<Project>();
   @Output() deleteProject = new EventEmitter<number>();
 
   projects: Project[] = [];
@@ -39,8 +40,14 @@ export class ProjectListComponent implements OnInit {
     });
   }
 
-  onSelectProject(project: Project) {
+  // Eye button - Just selects project for viewing tasks
+  onShowProject(project: Project) {
     this.selectProject.emit(project);
+  }
+
+  // Pencil button - Opens edit modal
+  onEditProject(project: Project) {
+    this.editProject.emit(project);
   }
 
   onDeleteProject(projectId: number) {
@@ -50,7 +57,6 @@ export class ProjectListComponent implements OnInit {
       
       this.projectService.deleteProject(projectId).subscribe({
         next: () => {
-          this.loadProjects();
           this.projects = this.projects.filter(p => p.id !== projectId);
           this.deleteProject.emit(projectId);
           this.isDeleting = false;
